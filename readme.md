@@ -2,6 +2,19 @@
 
 > Yet another rewrite of a library I have created, but this time all in C
 
+## Hardware Support
+
+- adc
+- pwm
+- spi
+- uart
+- usb (tinyusb)
+
+## Data Structures
+
+- linked list
+- fifo
+
 # MIT License
 
 **Copyright (c) 2023 The Guild of Calamitous Intent**
