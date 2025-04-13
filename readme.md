@@ -1,6 +1,10 @@
-MIT License
+# Pico Lib in C
 
-Copyright (c) 2023 The Guild of Calamitous Intent
+> Yet another rewrite of a library I have created, but this time all in C
+
+# MIT License
+
+**Copyright (c) 2023 The Guild of Calamitous Intent**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

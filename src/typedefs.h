@@ -1,0 +1,10 @@
+////////////////////////////////////////////////
+//  The MIT License (MIT)
+//  Copyright (c) 2023 Kevin Walchko
+//  see LICENSE for full details
+////////////////////////////////////////////////
+#pragma once
+
+#include <stdint.h>
+
+typedef uint32_t pin_t;
