@@ -2,7 +2,7 @@
 LIST(APPEND examples
     # adc
     serial
-    # i2c
+    i2c_scan
     # fixpt
     pwm
     spi

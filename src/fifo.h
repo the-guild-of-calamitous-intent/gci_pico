@@ -9,6 +9,8 @@
 extern "C" {
 #endif
 
+#include <stdint.h>
+
 // constexpr uint16_t FIFO_SIZE = 128;
 #define FIFO_SIZE 128
 

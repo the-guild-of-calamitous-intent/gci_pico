@@ -65,6 +65,7 @@ pico_sdk_init()
 LIST(APPEND pico_libs
   pico_stdlib
   hardware_adc
+  hardware_i2c
   hardware_pwm
   hardware_spi
   hardware_uart
@@ -73,6 +74,7 @@ LIST(APPEND pico_libs
 add_library(${PROJECT_NAME}
   src/adc.c
   src/fifo.c
+  src/i2c.c
   src/linked_list.c
   src/pwm.c
   # src/rtc.c
