@@ -16,11 +16,11 @@ constexpr float M_PI = 3.1415927f;
 #endif
 
 // Angular
-constexpr float rad2deg = 180.0f / M_PI;
-constexpr float deg2rad = M_PI / 180.0f;
-constexpr float rps2rpm =
-    30.0f / M_PI; // rads/sec -> rpm, 60s/min*rev/(2*pi) -> 30/pi
-constexpr float rpm2rps = M_PI / 30.0f; // rpm -> rads/sec
+constexpr float rad2deg = 180.0f / 3.1415927f;
+constexpr float deg2rad = 3.1415927f / 180.0f;
+// rads/sec -> rpm, 60s/min*rev/(2*pi) -> 30/pi
+constexpr float rps2rpm = 30.0f / 3.1415927f; 
+constexpr float rpm2rps = 3.1415927f / 30.0f; // rpm -> rads/sec
 
 // Magnetism
 constexpr float gauss2tesla = 1e-5f;

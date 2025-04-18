@@ -9,10 +9,9 @@ void fifo_init(volatile fifo_t *f) {
   memset((void *)f->buffer, 0, FIFO_SIZE);
 }
 
-static uint16_t next_pos(const uint16_t pos) { return (pos + 1) % FIFO_SIZE; }
-
-static bool fifo_is_full(volatile fifo_t *f) { return f->size >= FIFO_SIZE; }
-static bool fifo_is_empty(volatile fifo_t *f) { return f->size == 0; }
+static inline uint16_t next_pos(const uint16_t pos) { return (pos + 1) % FIFO_SIZE; }
+static inline bool fifo_is_full(volatile fifo_t *f) { return f->size >= FIFO_SIZE; }
+static inline bool fifo_is_empty(volatile fifo_t *f) { return f->size == 0; }
 
 // const uint16_t fifo_size(volatile fifo_t *f) { return f->size; }
 const uint16_t fifo_capacity(volatile fifo_t *f) { return FIFO_SIZE; }

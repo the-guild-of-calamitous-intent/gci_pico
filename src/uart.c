@@ -30,6 +30,9 @@ constexpr valid_uart_pins_t uart1_valid = {
 static volatile fifo_t uart0_buffer;
 static volatile fifo_t uart1_buffer;
 
+static gci_uart_t gci_uart0;
+static gci_uart_t gci_uart1;
+
 // UART interrupt handler
 static void on_uart_rx(int port, uart_inst_t *uart, volatile fifo_t *fifo) {
   // uart_hw_t *hw = (uart_hw_t *)uart;
