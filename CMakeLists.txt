@@ -46,22 +46,6 @@ endif()
 # Initialize the Pico SDK
 pico_sdk_init()
 
-# if(PICO_BOARD STREQUAL "pico")
-#   LIST(APPEND SRC
-#     src/rtc.c
-#   )
-#   LIST(APPEND LIBS
-#     hardware_rtc
-#   )
-# elseif(PICO_BOARD STREQUAL "pico2")
-#   LIST(APPEND SRC
-
-#   )
-#   LIST(APPEND LIBS
-    
-#   )
-# endif()
-
 LIST(APPEND pico_libs
   pico_stdlib
   hardware_adc

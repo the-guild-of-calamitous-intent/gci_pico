@@ -3,7 +3,7 @@
 #include <hardware/i2c.h>
 #include <stdint.h> // int types
 #include <stdlib.h> // calloc
-
+#include <string.h> // memcpy
 
 // constexpr uint32_t sda_valid[2] = { // i2c0, i2c1
 //     (1 << 0) | (1 << 4) | (1 << 8) | (1 << 12) | (1 << 16) | (1 << 20) | (1 << 24) | (1 << 28),
@@ -15,7 +15,7 @@
 typedef struct {
   uint8_t reg;
   uint8_t *buffer;
-} i2c_msg_t;
+} __attribute__((packed)) i2c_msg_t;
 
 typedef struct {
   uint32_t sda;
@@ -108,18 +108,23 @@ int32_t gci_i2c_read(i2c_inst_t *i2c, uint8_t addr, uint8_t reg, uint8_t *dst, u
 
 
 int32_t gci_i2c_write(i2c_inst_t *i2c, uint8_t addr, uint8_t reg, uint8_t *src, uint32_t size) {
-  // uint8_t out[2] = {reg, src};
-  i2c_msg_t msg = {
-    .reg = reg,
-    .buffer = src
-  };
+  uint8_t buffer[size + 1];
+  buffer[0] = reg;
+  // for (size_t i = 0; i < size; i++) {
+  //     buffer[i + 1] = src[i];
+  // }
+  if (size = 1) buffer[1] = src[0];
+  else {
+    memcpy(&buffer[1], src, size);
+  }
 
-  return i2c_write_blocking(i2c, addr, (uint8_t*)&msg, size+1, I2C_RELEASE_BUS);
+  // return i2c_write_blocking(i2c, addr, (uint8_t*)&msg, size+1, I2C_RELEASE_BUS);
+  return i2c_write_blocking(i2c, addr, buffer, size+1, I2C_RELEASE_BUS);
 }
 
-uint32_t gci_i2c_available(i2c_inst_t *i2c) { return i2c_get_read_available(i2c); }
-uint32_t gci_i2c0_available() { return i2c_get_read_available(i2c0); }
-uint32_t gci_i2c1_available() { return i2c_get_read_available(i2c1); }
+size_t gci_i2c_available(i2c_inst_t *i2c) { return i2c_get_read_available(i2c); }
+size_t gci_i2c0_available() { return i2c_get_read_available(i2c0); }
+size_t gci_i2c1_available() { return i2c_get_read_available(i2c1); }
 
 // int32_t gci_i2c0_read(uint8_t addr, uint8_t reg, uint8_t *dst, uint32_t size) {
 //   return gci_i2c_read(i2c0, addr, reg, dst, size);

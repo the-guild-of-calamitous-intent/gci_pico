@@ -55,9 +55,13 @@ int32_t gci_i2c1_bus_init(uint32_t baud, pin_t pin_sda, pin_t pin_scl);
 
 int32_t gci_i2c_read(i2c_inst_t *i2c, uint8_t addr, uint8_t reg, uint8_t *dst, uint32_t size);
 int32_t gci_i2c_write(i2c_inst_t *i2c, uint8_t addr, uint8_t reg, uint8_t *src, uint32_t size);
-uint32_t gci_i2c_available(i2c_inst_t *i2c);
-uint32_t gci_i2c0_available();
-uint32_t gci_i2c1_available();
+// inline int32_t gci_i2c_write(i2c_inst_t *i2c, uint8_t addr, uint8_t *src, uint32_t size) {
+//   return return i2c_write_blocking(i2c, addr, src, size, I2C_RELEASE_BUS);
+// }
+size_t gci_i2c_available(i2c_inst_t *i2c);
+// inline size_t gci_i2c_available(i2c_inst_t *i2c) { return i2c_get_read_available(i2c); }
+size_t gci_i2c0_available();
+size_t gci_i2c1_available();
 
 
 // gci_i2c_t* gci_i2c1_init_t(uint8_t addr);
