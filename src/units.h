@@ -19,7 +19,7 @@ constexpr float M_PI = 3.1415927f;
 constexpr float rad2deg = 180.0f / 3.1415927f;
 constexpr float deg2rad = 3.1415927f / 180.0f;
 // rads/sec -> rpm, 60s/min*rev/(2*pi) -> 30/pi
-constexpr float rps2rpm = 30.0f / 3.1415927f; 
+constexpr float rps2rpm = 30.0f / 3.1415927f;
 constexpr float rpm2rps = 3.1415927f / 30.0f; // rpm -> rads/sec
 
 // Magnetism

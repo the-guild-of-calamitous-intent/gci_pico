@@ -27,10 +27,10 @@ bool servo_init_adv(servo_t *pwm, pin_t pin, uint16_t max_pwm_us,
   const uint32_t clkDiv = 64;
   const uint16_t wrap   = 39063;
 
-  pwm->max_us           = (uint16_t)((max_pwm_us - min_pwm_us) / 20E3 * wrap);
-  pwm->min_us           = (uint16_t)(min_pwm_us / 20E3 * wrap);
+  pwm->max_us = (uint16_t)((max_pwm_us - min_pwm_us) / 20E3 * wrap);
+  pwm->min_us = (uint16_t)(min_pwm_us / 20E3 * wrap);
 
-  pwm_config config     = pwm_get_default_config();
+  pwm_config config = pwm_get_default_config();
   pwm_config_set_clkdiv_int(&config, clkDiv);
   pwm_config_set_wrap(&config, wrap);
   pwm_init(slice_num, &config, true);

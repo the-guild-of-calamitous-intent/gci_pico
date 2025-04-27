@@ -13,7 +13,6 @@ typedef struct {
   float x, y, z;
 } vec_t;
 
-
 typedef struct {
   int16_t x, y, z;
 } vec_raw_t;

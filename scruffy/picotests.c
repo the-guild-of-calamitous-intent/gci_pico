@@ -1,5 +1,5 @@
-#include <gtest/gtest.h>
 #include <linked_list.h>
+#include <scruffy/scruffy.h>
 // #include <map.h>
 #include <fifo.h>
 #include <stdint.h>
@@ -33,7 +33,13 @@ TEST(pico, fifo) {
   EXPECT_EQ(fifo->size, 4);
 
   fifo_move(fifo, buffer, 4);
-  for (uint8_t i=0; i<4; ++i) EXPECT_EQ(buffer[i], i);
+  for (uint8_t i = 0; i < 4; ++i)
+    EXPECT_EQ(buffer[i], i);
 
   EXPECT_EQ(fifo->size, 0);
+}
+
+int main() {
+  RUN_ALL();
+  return test_failures == 0 ? EXIT_SUCCESS : EXIT_FAILURE;
 }

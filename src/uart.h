@@ -5,9 +5,9 @@
 ////////////////////////////////////////////////
 #pragma once
 
+#include "typedefs.h"
 #include <hardware/uart.h>
 #include <stdint.h>
-#include "typedefs.h"
 
 #ifdef __cplusplus
 extern "C" {

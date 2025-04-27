@@ -14,9 +14,9 @@ void main() {
 
   servo_t pwm_real = {.pin = 10};
 
-  servo_t *pwm     = &pwm_real;
+  servo_t *pwm = &pwm_real;
 
-  bool ok          = servo_init(pwm, pwm_pin);
+  bool ok = servo_init(pwm, pwm_pin);
 
   while (true) {
     servo_write(pwm, 0.5);

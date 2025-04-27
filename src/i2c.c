@@ -30,10 +30,10 @@ constexpr valid_i2c_pins_t i2c1_valid = {
     .sda = (1 << 2) | (1 << 6) | (1 << 10) | (1 << 14) | (1 << 18) | (1 << 22) | (1 << 26),
     .scl = (1 << 3) | (1 << 7) | (1 << 11) | (1 << 15) | (1 << 19) | (1 << 23) | (1 << 27)};
 
-gci_i2c_t* gci_i2c0_init(uint8_t addr) {
-  gci_i2c_t *hw = (gci_i2c_t*)calloc(1, sizeof(gci_i2c_t));
+gci_i2c_t *gci_i2c0_init(uint8_t addr) {
+  gci_i2c_t *hw = (gci_i2c_t *)calloc(1, sizeof(gci_i2c_t));
   if (hw == NULL) return NULL;
-  hw->i2c = i2c0;
+  hw->i2c  = i2c0;
   hw->addr = addr;
   return hw;
 }
@@ -52,8 +52,7 @@ gci_i2c_t* gci_i2c0_init(uint8_t addr) {
 //   buadrate = I2C_UNINITIALIZED,
 // }
 
-static
-int32_t gci_i2c_bus_init(uint32_t port, uint32_t baud, pin_t pin_sda, pin_t pin_scl) {
+static int32_t gci_i2c_bus_init(uint32_t port, uint32_t baud, pin_t pin_sda, pin_t pin_scl) {
   pin_t sda, scl;
   i2c_inst_t *i2c = NULL;
   // gci_i2c_t *hw = NULL;
@@ -90,7 +89,7 @@ int32_t gci_i2c_bus_init(uint32_t port, uint32_t baud, pin_t pin_sda, pin_t pin_
 }
 
 int32_t gci_i2c0_bus_init(uint32_t baud, pin_t pin_sda, pin_t pin_scl) {
-  return gci_i2c_bus_init(0, baud, pin_sda, pin_scl); 
+  return gci_i2c_bus_init(0, baud, pin_sda, pin_scl);
 }
 
 int32_t gci_i2c1_bus_init(uint32_t baud, pin_t pin_sda, pin_t pin_scl) {
@@ -106,7 +105,6 @@ int32_t gci_i2c_read(i2c_inst_t *i2c, uint8_t addr, uint8_t reg, uint8_t *dst, u
   return num;
 }
 
-
 int32_t gci_i2c_write(i2c_inst_t *i2c, uint8_t addr, uint8_t reg, uint8_t *src, uint32_t size) {
   uint8_t buffer[size + 1];
   buffer[0] = reg;
@@ -119,7 +117,7 @@ int32_t gci_i2c_write(i2c_inst_t *i2c, uint8_t addr, uint8_t reg, uint8_t *src, 
   }
 
   // return i2c_write_blocking(i2c, addr, (uint8_t*)&msg, size+1, I2C_RELEASE_BUS);
-  return i2c_write_blocking(i2c, addr, buffer, size+1, I2C_RELEASE_BUS);
+  return i2c_write_blocking(i2c, addr, buffer, size + 1, I2C_RELEASE_BUS);
 }
 
 size_t gci_i2c_available(i2c_inst_t *i2c) { return i2c_get_read_available(i2c); }
@@ -141,9 +139,6 @@ size_t gci_i2c1_available() { return i2c_get_read_available(i2c1); }
 // int32_t gci_i2c1_write(uint8_t addr, uint8_t reg, uint8_t *src, uint32_t size) {
 //   return gci_i2c_write(i2c1, addr, reg, src, size);
 // }
-
-
-
 
 // static
 // int32_t i2c_bus_init(uint32_t port, uint32_t baud, pin_t pin_sda, pin_t pin_scl) {
@@ -177,8 +172,6 @@ size_t gci_i2c1_available() { return i2c_get_read_available(i2c1); }
 
 //   return i2c_init(i2c, baud);
 // }
-
-
 
 // uint32_t i2cx_init(uint32_t port, uint32_t baud, uint32_t pin_sda, uint32_t
 // pin_scl) {

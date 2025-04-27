@@ -1,10 +1,10 @@
-#include <stdint.h>
-#include <stdbool.h>
-#include <stdio.h>
+#include "picolibc.h"
 #include <hardware/gpio.h>
 #include <pico/binary_info.h>
 #include <pico/stdlib.h>
-#include "picolibc.h"
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
 
 constexpr pin_t i2c_scl = 1;
 constexpr pin_t i2c_sda = 0;
@@ -50,8 +50,9 @@ int main() {
   int num = i2c_bus_scan(0, addrs, sizeof(addrs));
 
   printf("Found: %d\n", num);
-  for (int i=0; i < num; ++i) printf(" - 0x%X\n", (int)addrs[i]);
+  for (int i = 0; i < num; ++i)
+    printf(" - 0x%X\n", (int)addrs[i]);
 
-  while (1);
-
+  while (1)
+    ;
 }
