@@ -1,5 +1,9 @@
-
-#include "picolibc.h"
+////////////////////////////////////////////////
+//  The MIT License (MIT)
+//  Copyright (c) 2023 Kevin Walchko
+//  see LICENSE for full details
+////////////////////////////////////////////////
+#include "gci_pico/gci_pico.h"
 // #include "pico/stdlib.h"
 #include "hardware/adc.h"
 #include "hardware/gpio.h"

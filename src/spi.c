@@ -1,9 +1,13 @@
-
-#include "typedefs.h"
+////////////////////////////////////////////////
+//  The MIT License (MIT)
+//  Copyright (c) 2023 Kevin Walchko
+//  see LICENSE for full details
+////////////////////////////////////////////////
 #include <hardware/gpio.h>
 #include <hardware/spi.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include "gci_pico/typedefs.h"
 
 static uint32_t spix_init(spi_inst_t *spi, uint32_t baud, pin_t miso,
                           pin_t mosi, pin_t sck, pin_t cs) {
@@ -18,7 +22,12 @@ static uint32_t spix_init(spi_inst_t *spi, uint32_t baud, pin_t miso,
   gpio_set_function(miso, GPIO_FUNC_SPI);
   gpio_set_function(mosi, GPIO_FUNC_SPI);
   gpio_set_function(sck, GPIO_FUNC_SPI);
-  gpio_set_function(cs, GPIO_FUNC_SPI);
+  // gpio_set_function(cs, GPIO_FUNC_SPI); // doesn't this work?
+
+  // Chip select is active-low, so we'll initialise it to a driven-high state
+  gpio_init(cs);
+  gpio_set_dir(cs, GPIO_OUT);
+  gpio_put(cs, 1);
 
   return baud;
 }

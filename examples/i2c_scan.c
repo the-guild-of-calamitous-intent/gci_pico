@@ -1,10 +1,10 @@
-#include "picolibc.h"
-#include <hardware/gpio.h>
-#include <pico/binary_info.h>
-#include <pico/stdlib.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <hardware/gpio.h>
+#include <pico/binary_info.h>
+#include <pico/stdlib.h>
+#include "gci_pico/gci_pico.h"
 
 constexpr pin_t i2c_scl = 1;
 constexpr pin_t i2c_sda = 0;

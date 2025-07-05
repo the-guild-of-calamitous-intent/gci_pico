@@ -10,7 +10,7 @@ set(PICO_BOARD "pico") # before pico_sdk_import.cmake, pico, pico2, pico_w
 include(${PICO_SDK_PATH}/external/pico_sdk_import.cmake)
 
 # Set project name and language
-project(pico_c C CXX ASM)
+project(gci_pico C CXX ASM)
 set(CMAKE_C_STANDARD 23) # Options: 90, 99, 11, 17, 23 (or gnu90, gnu99, etc.)
 # set(CMAKE_C_STANDARD_REQUIRED ON) # Enforce the standard
 # set(CMAKE_C_EXTENSIONS OFF) # Disable GNU extensions (optional, use ON for gnuXX)

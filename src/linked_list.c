@@ -1,5 +1,9 @@
-
-#include "linked_list.h"
+////////////////////////////////////////////////
+//  The MIT License (MIT)
+//  Copyright (c) 2023 Kevin Walchko
+//  see LICENSE for full details
+////////////////////////////////////////////////
+#include "gci_pico/linked_list.h"
 
 node_t *node_create(void *data) {
   node_t *p = (node_t *)malloc(sizeof(node_t));

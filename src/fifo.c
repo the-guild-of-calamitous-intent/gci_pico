@@ -1,5 +1,9 @@
-
-#include "fifo.h"
+////////////////////////////////////////////////
+//  The MIT License (MIT)
+//  Copyright (c) 2023 Kevin Walchko
+//  see LICENSE for full details
+////////////////////////////////////////////////
+#include "gci_pico/fifo.h"
 #include <stdint.h>
 #include <string.h>
 

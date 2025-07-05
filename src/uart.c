@@ -1,13 +1,17 @@
-// #pragma once
+////////////////////////////////////////////////
+//  The MIT License (MIT)
+//  Copyright (c) 2023 Kevin Walchko
+//  see LICENSE for full details
+////////////////////////////////////////////////
+#include <stdint.h>
+#include <string.h> // memcpy
 #include <hardware/gpio.h>
 #include <hardware/irq.h>
 #include <hardware/uart.h>
 #include <pico/stdlib.h>
-#include <stdint.h>
 // #include <stdio.h>
-#include "fifo.h"
-#include "uart.h"
-#include <string.h> // memcpy
+#include "gci_pico/fifo.h"
+#include "gci_pico/uart.h"
 
 constexpr uint32_t UART_QUEUE_SIZE  = 128;
 constexpr int32_t UART_INVALID_PORT = -1;

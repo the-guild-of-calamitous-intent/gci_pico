@@ -3,12 +3,7 @@
 #include <pico/stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
-// #include <tusb.h> // wait for USB
-
-#include "picolibc.h"
-
-// #define TX_PIN 0
-// #define RX_PIN 1
+#include "gci_pico/gci_pico.h"
 
 constexpr uint32_t uart0_pin_tx = 12;
 constexpr uint32_t uart0_pin_rx = 13;

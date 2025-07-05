@@ -6,6 +6,7 @@ LIST(APPEND examples
     # fixpt
     pwm
     spi
+    gps-serial
 )
 
 foreach(app ${examples})

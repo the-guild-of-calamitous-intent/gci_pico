@@ -1,4 +1,4 @@
-# Pico Lib in C
+# `gci_pico`
 
 > Yet another rewrite of a library I have created, but this time all in C
 
