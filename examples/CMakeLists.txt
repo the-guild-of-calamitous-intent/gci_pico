@@ -1,12 +1,8 @@
 
 LIST(APPEND examples
-    # adc
-    serial
-    i2c_scan
-    # fixpt
-    pwm
-    spi
-    gps-serial
+    adc-example
+    uart-example
+    pwm-example
 )
 
 foreach(app ${examples})

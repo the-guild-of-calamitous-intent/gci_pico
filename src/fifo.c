@@ -31,10 +31,13 @@ void fifo_push(volatile fifo_t *f, const uint8_t b) {
 uint16_t fifo_move(volatile fifo_t *f, uint8_t *data, uint16_t size) {
   if (fifo_is_empty(f)) return 0;
 
-  uint16_t num = (f->size > size) ? size : f->size;
+  // uint16_t num = (f->size > size) ? size : f->size;
+  uint16_t num = (size > f->size)? f->size : size;
   memcpy(data, (void *)f->buffer, num);
 
-  f->tail = 0;
-  f->size = 0;
+  // f->tail = 0;
+  // f->size = 0;
+  f->tail -= num;
+  f->size -= num;
   return num;
 }

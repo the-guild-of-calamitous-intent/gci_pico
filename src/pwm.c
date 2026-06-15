@@ -8,15 +8,16 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#include "hardware/clocks.h"
-#include "hardware/gpio.h"
-#include "hardware/pwm.h"
-#include "pico/stdlib.h"
+#include <pico/binary_info.h>
+#include <hardware/clocks.h>
+#include <hardware/gpio.h>
+#include <hardware/pwm.h>
+#include <pico/stdlib.h>
 
 static constexpr uint16_t SERVO_MAX_PULSE_WIDTH = 2000UL;
 static constexpr uint16_t SERVO_MIN_PULSE_WIDTH = 1000UL;
 
-bool servo_init_adv(servo_t *pwm, pin_t pin, uint16_t max_pwm_us,
+bool servo_init_adv(servo_t *pwm, const pin_t pin, uint16_t max_pwm_us,
                     uint16_t min_pwm_us) {
   if (pwm == NULL) return false;
 
@@ -43,7 +44,7 @@ bool servo_init_adv(servo_t *pwm, pin_t pin, uint16_t max_pwm_us,
   return true;
 }
 
-bool servo_init(servo_t *pwm, pin_t pin) {
+bool servo_init(servo_t *pwm, const pin_t pin) {
   return servo_init_adv(pwm, pin, SERVO_MAX_PULSE_WIDTH, SERVO_MIN_PULSE_WIDTH);
 }
 
@@ -60,6 +61,6 @@ void servo_write(servo_t *pwm, float percent) {
   if (percent < 0.0f) percent = 0.0f;
 
   // helper, might be better to get slice/channel
-  pwm_set_gpio_level(pwm->pin, percent * pwm->max_us + pwm->min_us);
+  pwm_set_gpio_level(pwm->pin, (uint16_t)(percent * pwm->max_us) + pwm->min_us);
   // pwm_set_chan_level(slice_num, channel, percent*max_us + min_us);
 }

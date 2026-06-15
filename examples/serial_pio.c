@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "gci_pico/gci_pico.h"
+#include "gci_pico/uart_pio.pio.h"
 
 constexpr uint32_t uart0_pin_tx = 12;
 constexpr uint32_t uart0_pin_rx = 13;

@@ -5,9 +5,9 @@
 ////////////////////////////////////////////////
 #pragma once
 
-#include "typedefs.h"
 #include <stdbool.h>
 #include <stdint.h>
+#include "gci_pico/typedefs.h"
 
 #if defined __cplusplus
 extern "C" {
@@ -20,8 +20,8 @@ typedef struct {
   uint16_t min_us;
 } servo_t;
 
-bool servo_init(servo_t *pwm, pin_t pin);
-bool servo_init_adv(servo_t *pwm, pin_t pin, uint16_t max_pwm_us,
+bool servo_init(servo_t *pwm, const pin_t pin);
+bool servo_init_adv(servo_t *pwm, const pin_t pin, uint16_t max_pwm_us,
                     uint16_t min_pwm_us);
 void servo_write_us(servo_t *pwm, uint16_t pulse_width_us);
 void servo_write(servo_t *pwm, float percent);

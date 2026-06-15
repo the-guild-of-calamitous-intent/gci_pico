@@ -6,20 +6,23 @@
 #include <stdio.h>
 #include "gci_pico/gci_pico.h"
 
-constexpr pin_t pwm_pin = 10;
+constexpr pin_t PWM_PIN = 10;
 
 void main() {
   stdio_init_all();
   wait_for_usb();
 
-  servo_t pwm_real = {.pin = 10};
+  servo_t pwm;
 
-  servo_t *pwm = &pwm_real;
+  bool ok = servo_init(&pwm, PWM_PIN);
 
-  bool ok = servo_init(pwm, pwm_pin);
+  bi_decl(bi_pin_mask_with_name(PWM_PIN, "PWM Pin"));
 
+  float width = 0.0f;
   while (true) {
-    servo_write(pwm, 0.5);
+    width += 0.1f;
+    width = (width <= 1.0f) ? width : 0.0f;
+    servo_write(&pwm, width);
     sleep_ms(100);
   }
 }

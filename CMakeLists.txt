@@ -49,23 +49,28 @@ pico_sdk_init()
 LIST(APPEND pico_libs
   pico_stdlib
   hardware_adc
-  hardware_i2c
+#   hardware_i2c
   hardware_pwm
-  hardware_spi
+#   hardware_spi
   hardware_uart
+  hardware_pio
 )
 
 add_library(${PROJECT_NAME}
   src/adc.c
   src/fifo.c
-  src/i2c.c
+  src/interrupts.c
+#   src/i2c.c
   src/linked_list.c
   src/pwm.c
   # src/rtc.c
-  src/spi.c
+#   src/spi.c
   src/uart.c
   src/usb.c
 )
+
+# pico_generate_pio_header(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/src/uart_pio.pio)
+
 target_include_directories(${PROJECT_NAME} PUBLIC src)
 target_link_libraries(${PROJECT_NAME} ${pico_libs})
 # target_compile_definitions(${PROJECT_NAME} PUBLIC BOARD_TYPE=${PICO_BOARD})

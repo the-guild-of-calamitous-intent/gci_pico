@@ -6,14 +6,23 @@
 
 - adc
 - pwm
-- spi
-- uart
+- uart (interrupt driven)
 - usb (tinyusb)
+- watchdog timer
+
+## SPI and I2C
+
+These are in another library for sensors, `gci_sensors`.
 
 ## Data Structures
 
 - linked list
 - fifo
+
+## ToDo
+
+- [ ] PIO UART
+- [ ] Add DMA support
 
 # MIT License
 

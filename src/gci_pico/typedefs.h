@@ -7,7 +7,10 @@
 
 #include <stdint.h>
 
+#ifndef __PIN__
+#define __PIN__
 typedef uint32_t pin_t;
+#endif
 
 typedef struct {
   float x, y, z;
