@@ -1,6 +1,6 @@
 
 # Specify the minimum version of CMake
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 4.0)
 
 # Set the Pico SDK path (adjust if needed)
 set(PICO_SDK_PATH "$ENV{HOME}/github/pico-sdk")
@@ -11,6 +11,7 @@ include(${PICO_SDK_PATH}/external/pico_sdk_import.cmake)
 
 # Set project name and language
 project(gci_pico C CXX ASM)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_C_STANDARD 23) # Options: 90, 99, 11, 17, 23 (or gnu90, gnu99, etc.)
 # set(CMAKE_C_STANDARD_REQUIRED ON) # Enforce the standard
 # set(CMAKE_C_EXTENSIONS OFF) # Disable GNU extensions (optional, use ON for gnuXX)
@@ -28,9 +29,9 @@ if(PROJECT_IS_TOP_LEVEL)
 
   message(STATUS "-------------------------------------")
   message(STATUS "  Project: ${PROJECT_NAME}")
-  message(STATUS "  Hardware: ${PICO_BOARD}")
-  message(STATUS "  C++ ${CMAKE_CXX_STANDARD}")
-  message(STATUS "  C ${CMAKE_C_STANDARD}")
+  message(STATUS "  Hardware: ${PICO_BOARD} ${PICO_PLATFORM}")
+  message(STATUS "  C ${CMAKE_C_STANDARD}: ${CMAKE_C_COMPILER_ID} ${CMAKE_C_COMPILER_VERSION} (${CMAKE_C_COMPILER})")
+  message(STATUS "  C++ ${CMAKE_CXX_STANDARD}: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION} (${CMAKE_CXX_COMPILER})")
   message(STATUS "-------------------------------------")
   message(STATUS " ${HOST}")
   message(STATUS " ${OSN}: ${OS_VERSION}")
@@ -38,6 +39,7 @@ if(PROJECT_IS_TOP_LEVEL)
   message(STATUS "-------------------------------------")
 
   set(BUILD_EXAMPLES ON)
+  set(BUILD_DEV ON)
 else()
   message(STATUS "-> ${PROJECT_NAME} is submodule")
   set(BUILD_EXAMPLES OFF)
@@ -49,24 +51,24 @@ pico_sdk_init()
 LIST(APPEND pico_libs
   pico_stdlib
   hardware_adc
-#   hardware_i2c
   hardware_pwm
-#   hardware_spi
   hardware_uart
-  hardware_pio
+  #   hardware_i2c
+  #   hardware_spi
+#   hardware_pio
 )
 
 add_library(${PROJECT_NAME}
   src/adc.c
   src/fifo.c
   src/interrupts.c
-#   src/i2c.c
   src/linked_list.c
   src/pwm.c
-  # src/rtc.c
-#   src/spi.c
   src/uart.c
   src/usb.c
+  #   src/i2c.c
+  # src/rtc.c
+#   src/spi.c
 )
 
 # pico_generate_pio_header(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/src/uart_pio.pio)
@@ -82,6 +84,10 @@ pico_enable_stdio_uart(${PROJECT_NAME} 0)
 
 if (BUILD_EXAMPLES)
   add_subdirectory(examples)
+endif()
+
+if (BUILD_DEV)
+  add_subdirectory(dev)
 endif()
 
 # # Add the executable

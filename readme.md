@@ -22,7 +22,7 @@ These are in another library for sensors, `gci_sensors`.
 ## ToDo
 
 - [ ] PIO UART
-- [ ] Add DMA support
+- [ ] Add DMA support for UART
 
 # MIT License
 

@@ -20,9 +20,7 @@ extern "C" {
 #define UART_INVALID_RX -3
 
 // __attribute__((deprecated)) // use uart_open
-// int32_t uart_bus_init(uint8_t port, uint32_t baudrate, pin_t pin_tx, pin_t pin_rx);
 int32_t uart_open(uint8_t port, uint32_t baudrate, pin_t pin_tx, pin_t pin_rx);
-
 
 int32_t uart_read(uint8_t port, uint8_t *data, uint32_t size);
 int32_t uart_write(uint8_t port, uint8_t *data, uint32_t size);

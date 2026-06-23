@@ -19,11 +19,11 @@
 
 // pi pico specific
 #include "adc.h"
-// #include "i2c.h"
 #include "pwm.h"
-// #include "spi.h"
 #include "uart.h"
 #include "usb.h"
+// #include "spi.h"
+// #include "i2c.h"
 // #include "watchdog.h"
 
 // #include "rtc.h"

@@ -7,10 +7,14 @@
 
 #include "typedefs.h"
 
-constexpr pin_t A0 = 0;
-constexpr pin_t A1 = 1;
-constexpr pin_t A2 = 2;
-constexpr pin_t A3 = 3;
+// constexpr pin_t A0 = 0;
+// constexpr pin_t A1 = 1;
+// constexpr pin_t A2 = 2;
+// constexpr pin_t A3 = 3;
+#define A0 0
+#define A1 1
+#define A2 2
+#define A3 3
 
 // typedef enum { A0, A1, A2, A3 } adc_channel_t;
 

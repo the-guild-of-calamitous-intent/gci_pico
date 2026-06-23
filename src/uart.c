@@ -16,6 +16,8 @@
 // #include "picolib/uart.h"
 // #include "typedefs.h"
 
+#define UART_VALID_PORT(port) if ((port < 0) || (port > 1)) return -1
+
 static volatile fifo_t uart0_buffer;
 static volatile fifo_t uart1_buffer;
 
@@ -136,6 +138,7 @@ int32_t uart_available(int port) {
 }
 
 bool uart_enabled(int port) {
+  UART_VALID_PORT(port);
   if ((port < 0) || (port > 1)) return false;
   uart_inst_t *uart = (port == 0) ? uart0 : uart1;
   return uart_is_enabled(uart);

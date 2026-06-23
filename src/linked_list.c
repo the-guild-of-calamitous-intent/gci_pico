@@ -60,7 +60,7 @@ bool list_free(list_t *list) {
   if (list == NULL) return false;
   // printf("start\n");
   node_t *p = NULL;
-  int i     = 0;
+  // int i     = 0;
   while (list->head != NULL) {
     // printf("loop\n");
     p          = list->head;
